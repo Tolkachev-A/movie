@@ -1,0 +1,10 @@
+.photoBloc {
+    display: flex;
+}
+
+.photoBloc > span {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    color: #4280bf;
+}

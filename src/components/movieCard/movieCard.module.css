@@ -1,0 +1,98 @@
+.movieBloc {
+    max-width: 250px;
+    width: 100%;
+}
+
+.movieImg img {
+    transform: scale(1);
+    transition: all 1s ease-in-out;
+    object-position: center;
+
+}
+
+
+.cardImg {
+    object-fit: cover;
+    max-width: 330px;
+    width: 100%;
+}
+
+.movieImg {
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.play {
+    display: none;
+    z-index: 100;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.play button {
+    color: white !important;
+}
+
+.play svg {
+    z-index: 100;
+    width: 100px;
+    height: 100px;
+}
+
+
+.movieImg:hover img {
+    transform: scale(1.1);
+
+}
+
+.movieImg:hover .play {
+    display: block;
+}
+
+.movieImg:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    animation-duration: 0.1s;
+    transition: all 1s ease-in-out;
+
+}
+
+.movieImg:hover:after {
+    background: rgb(255, 88, 96, 0.8);
+}
+
+.movieBody {
+    padding: 10px !important;
+    background-color: #41484f;
+    color: ghostwhite;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+}
+
+.movieName {
+    height: 65px;
+    overflow: hidden;
+}
+
+.movieRating {
+    display: flex;
+    align-items: center;
+}
+
+.movieBody svg {
+    color: #ff5680;
+}
+
+.movieBody span {
+    margin-left: 10px;
+}
