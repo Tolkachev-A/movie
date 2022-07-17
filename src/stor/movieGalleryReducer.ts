@@ -2,16 +2,21 @@ import {AppDispatch, AppThunk} from "./store";
 import {api} from "../api/api";
 
 type ItemsMostPopularMoviesType = {
+
     id: string
-    rank: string
-    rankUpDown: string
-    title: string
-    fullTitle: string
-    year: string
     image: string
-    crew: string
+    title: string
+    description: string
+    runtimeStr: string
+    genres: string
+    genreList: [key: string, value: string]
+    contentRating: string
     imDbRating: string
-    imDbRatingCount: string
+    imDbRatingVotes: string
+    metacriticRating: string
+    plot: string
+    stars: string
+    starList: [id: string, name: string]
 }
 export type ActionMovieGalleryReducer = ReturnType<typeof setMostPopularMovies>
 let initialState = {
@@ -39,7 +44,7 @@ export const setMostPopularMovies = (payload: Array<ItemsMostPopularMoviesType>)
     payload
 }) as const
 
-export const fetchMoviesThank = (): AppThunk => async (dispatch: AppDispatch) => {
+export const fetchMovies = (): AppThunk => async (dispatch: AppDispatch) => {
     const response = await api.fetchMovies()
     dispatch(setMostPopularMovies(response))
 }

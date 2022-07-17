@@ -6,7 +6,7 @@ import {MoviePage} from "./page/MoviePage";
 import {Container} from "@mui/material";
 import {Header} from "./components/Header";
 import {useAppDispatch, useAppSelector} from "./hooks/appHooks";
-import {fetchMoviesThank} from "./stor/movieGalleryReducer";
+import {fetchMovies} from "./stor/movieGalleryReducer";
 
 function App() {
     const dispatch = useAppDispatch()
@@ -14,7 +14,7 @@ function App() {
 
     useEffect(() => {
         if (itemsMovie.length === 0) {
-            dispatch(fetchMoviesThank())
+            dispatch(fetchMovies())
         }
     }, [])
 

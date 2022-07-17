@@ -82,6 +82,9 @@
 .movieName {
     height: 65px;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #abb7c4;
 }
 
 .movieRating {

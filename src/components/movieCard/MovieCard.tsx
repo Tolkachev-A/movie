@@ -13,9 +13,12 @@ import {NavLink} from "react-router-dom";
 import {MovieImg} from "./MovieImg";
 
 type MovieCardType = {
+    id: string
     title: string
     imDbRating: string
     image: string
+    year: string
+    movieClickHandler: (id: string) => void
 }
 
 export const MovieCard: FC<MovieCardType> = (props) => {
@@ -26,7 +29,8 @@ export const MovieCard: FC<MovieCardType> = (props) => {
                     <Box className={style.movieImg}>
                         <MovieImg height={'250'} image={props.image}/>
                         <div className={style.play}>
-                            <IconButton size={"large"}>
+                            <IconButton size={"large"}
+                                        onClick={() => props.movieClickHandler(props.id)}>
                                 <PlayCircleOutlineIcon/>
                             </IconButton>
                         </div>
@@ -34,7 +38,7 @@ export const MovieCard: FC<MovieCardType> = (props) => {
                 </NavLink>
                 <CardContent className={style.movieBody}>
                     <Typography gutterBottom variant="h5" component="div" className={style.movieName}>
-                        {props.title}
+                        {props.title} <><br/>{props.year.match(/\d/g)} год</>
                     </Typography>
                     <Typography gutterBottom variant="h6" component="div" className={style.movieRating}>
                         <StarIcon/>
