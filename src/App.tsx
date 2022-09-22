@@ -1,12 +1,12 @@
 import React, {useEffect} from 'react';
 import './App.css';
-import {Route, Routes,} from "react-router-dom";
-import {MovieGallery} from "./page/MovieGallery";
-import {MoviePage} from "./page/MoviePage";
-import {Container} from "@mui/material";
-import {Header} from "./components/Header";
-import {useAppDispatch, useAppSelector} from "./hooks/appHooks";
-import {fetchMovies} from "./stor/movieGalleryReducer";
+import {Route, Routes,} from 'react-router-dom';
+import {MovieGallery} from './page/MovieGallery';
+import {MoviePage} from './page/MoviePage';
+import {Container} from '@mui/material';
+import {Header} from './components/Header';
+import {useAppDispatch, useAppSelector} from './hooks/appHooks';
+import {fetchMovies} from './stor/movieGalleryReducer';
 
 function App() {
     const dispatch = useAppDispatch()
@@ -24,8 +24,8 @@ function App() {
             <Container>
                 <Header/>
                 <Routes>
-                    <Route path='/' element={<MovieGallery/>}/>
-                    <Route path='/movie' element={<MoviePage/>}/>
+                    <Route path="/" element={<MovieGallery/>}/>
+                    <Route path="/movie/:id" element={<MoviePage/>}/>
                 </Routes>
             </Container>
         </div>

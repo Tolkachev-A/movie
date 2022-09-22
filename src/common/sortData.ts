@@ -1,6 +1,29 @@
-import {MovieDataType} from "../stor/moviePageReducer";
+import {MovieDataType} from '../stor/moviePageReducer';
 
-export function sortData(arrayData: any, arrayOfSortData: any): MovieDataType {
+const dataSort: MovieDataType = {
+    id: '',
+    image: '',
+    title: '',
+    year: '',
+    releaseDate: '',
+    runtimeStr: '',
+    plot: '',
+    stars: '',
+    actorList: {
+        id: '',
+        image: '',
+        name: '',
+        asCharacter: '',
+    },
+    genres: '',
+    countries: '',
+    imDbRating: '',
+    wikipedia: {imDbId: '', plainText: ''},
+    videoId: '',
+}
+const arrayOfSortData = Object.keys(dataSort)
+
+export function sortData(arrayData: any,): MovieDataType {
     let arrValue = arrayData.reduce((acc: any, item: any) => {
         acc = [...acc, item.value]
         return acc
@@ -22,7 +45,6 @@ export function sortData(arrayData: any, arrayOfSortData: any): MovieDataType {
                 } else {
                     newData = {...newData, [arrayOfSortData[j]]: arrValue[i][arrayOfSortData[j]]}
                 }
-
 
             }
         }

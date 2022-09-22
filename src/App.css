@@ -17,9 +17,9 @@
 }
 
 .movie {
-    margin: 0 auto;
-    display: flex !important;
-    justify-content: space-between !important;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .boxContainer {
@@ -105,5 +105,5 @@
         flex-wrap: wrap;
     }
 
-     
+
 }

@@ -1,16 +1,31 @@
-import React from 'react';
-import {MovieImg} from "../components/movieCard/MovieImg";
+import React, {useEffect} from 'react';
 import '../App.css'
-import Typography from "@mui/material/Typography";
-import {RatingMove} from "../components/Rating";
-import {Descriptions} from "../components/Descriptions";
-import {Photos} from "../components/photos/Photos";
-import {Video} from "../components/Video";
+import Typography from '@mui/material/Typography';
+import {RatingMove} from '../components/Rating';
+import {Descriptions} from '../components/Descriptions';
+import {Photos} from '../components/photos/Photos';
+import {Video} from '../components/Video';
+import {useAppDispatch, useAppSelector} from '../hooks/appHooks';
+import {fetchInfoMovie} from '../stor/moviePageReducer';
+import {useParams} from 'react-router';
 
 export const MoviePage = () => {
+
+    const {id} = useParams()
+    
+    const movieData = useAppSelector(state => state.moviePage.movieData)
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        id && dispatch(fetchInfoMovie(id))
+    }, [])
+
+    if (Object.keys(movieData).length === 0) {
+        return <div>loading</div>
+    }
+
     return (
         <div className={'containerBody movieBloc'}>
-            {/*<MovieImg height={'550'}/>*/}
             <div className={'infoContainer'}>
                 <div className={'infoBloc'}>
                     <Typography variant="h2" component="div"
@@ -19,11 +34,11 @@ export const MoviePage = () => {
                                     textAlign: 'center',
                                     marginBottom: '50px'
                                 }}>
-                        Lizard
+                        {movieData.title}
                     </Typography>
 
-                    <RatingMove/>
-                    <Descriptions/>
+                    <RatingMove rating={+movieData.imDbRating}/>
+                    <Descriptions description={movieData.wikipedia.plainText}/>
                     <div className={'boxContainer'}>
                         <Typography component="span">
                             PHOTOS
@@ -31,10 +46,11 @@ export const MoviePage = () => {
                         <div className={'borderBox'}>
                         </div>
                         <div className={'imagesList'}>
-                            <Photos/>
-                            <Photos/>
-                            <Photos/>
-                            <Photos/>
+                            <Photos src={movieData.image}/>
+                            <Photos src={movieData.image}/>
+                            <Photos src={movieData.image}/>
+                            <Photos src={movieData.image}/>
+                            <Photos src={movieData.image}/>
                         </div>
                     </div>
                     <div className={'boxContainer'}>

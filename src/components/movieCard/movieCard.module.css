@@ -1,6 +1,8 @@
 .movieBloc {
     max-width: 250px;
-    width: 100%;
+    min-width: 200px;
+    flex: 1 32%;
+    margin: 30px 5px 0 5px;
 }
 
 .movieImg img {
