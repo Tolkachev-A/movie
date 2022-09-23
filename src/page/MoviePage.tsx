@@ -5,14 +5,15 @@ import {RatingMove} from '../components/Rating';
 import {Descriptions} from '../components/Descriptions';
 import {Photos} from '../components/photos/Photos';
 import {Video} from '../components/Video';
-import {useAppDispatch, useAppSelector} from '../hooks/appHooks';
+import {useAppDispatch, useAppSelector} from '../common/hooks/appHooks';
 import {fetchInfoMovie} from '../stor/moviePageReducer';
 import {useParams} from 'react-router';
+import Box from '@mui/material/Box';
 
 export const MoviePage = () => {
 
     const {id} = useParams()
-    
+
     const movieData = useAppSelector(state => state.moviePage.movieData)
     const dispatch = useAppDispatch()
 
@@ -43,30 +44,28 @@ export const MoviePage = () => {
                         <Typography component="span">
                             PHOTOS
                         </Typography>
-                        <div className={'borderBox'}>
-                        </div>
+                        <div className={'borderBox'}/>
                         <div className={'imagesList'}>
-                            <Photos src={movieData.image}/>
-                            <Photos src={movieData.image}/>
-                            <Photos src={movieData.image}/>
-                            <Photos src={movieData.image}/>
-                            <Photos src={movieData.image}/>
+                            {movieData.actorList.map((item) => <Photos key={item.id} src={item.image}/>)}
                         </div>
                     </div>
-                    <div className={'boxContainer'}>
+                    <Box className={'boxContainer'} sx={{display: 'flex',}}>
                         <Typography component="span">
                             CAST
                         </Typography>
-                        <div className={'borderBox'}>
-                        </div>
-                        <Photos height={'50'} width={'50'} borderRadius={'5'} text={'Robert Downey Jr'}/>
-                    </div>
+                        <div className={'borderBox'}/>
+                        {movieData.actorList.map((item) => <Photos key={item.id}
+                                                                   width={'50'}
+                                                                   borderRadius={'5'}
+                                                                   height={'50'}
+                                                                   src={item.image}
+                                                                   text={item.name}/>)}
+                    </Box>
                     <div className={'boxContainer'}>
                         <Typography component="span">
                             VIDEOS
                         </Typography>
-                        <div className={'borderBox'}>
-                        </div>
+                        <div className={'borderBox'}/>
                         <Video/>
                     </div>
                 </div>

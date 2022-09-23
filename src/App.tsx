@@ -5,7 +5,7 @@ import {MovieGallery} from './page/MovieGallery';
 import {MoviePage} from './page/MoviePage';
 import {Container} from '@mui/material';
 import {Header} from './components/Header';
-import {useAppDispatch, useAppSelector} from './hooks/appHooks';
+import {useAppDispatch, useAppSelector} from './common/hooks/appHooks';
 import {fetchMovies} from './stor/movieGalleryReducer';
 
 function App() {

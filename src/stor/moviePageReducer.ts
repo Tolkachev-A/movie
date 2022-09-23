@@ -1,9 +1,8 @@
 import {AppDispatch, AppThunk} from './store';
 import {api, DataMovieResponseType, DataYuTubeResponseType} from '../api/api';
-import {sortData} from '../common/sortData';
+import {sortData} from '../common/utils/sortData';
 
 
-export type ActionMoviePageReducer = ReturnType<typeof setInfoMovies>
 let initialState = {
     movieData: {} as MovieDataType
 }
@@ -34,5 +33,6 @@ export const fetchInfoMovie = (id: string): AppThunk => async (dispatch: AppDisp
     dispatch(setInfoMovies(sortResponse))
 }
 //type
+export type ActionMoviePageReducer = ReturnType<typeof setInfoMovies>
 type InitialStateType = typeof initialState
 export type MovieDataType = DataMovieResponseType & DataYuTubeResponseType

@@ -51,12 +51,12 @@ export type DataMovieResponseType = {
     runtimeStr: string
     plot: string
     stars: string
-    actorList: {
+    actorList: [{
         id: string
         image: string
         name: string
         asCharacter: string
-    }
+    }]
     genres: string
     countries: string
     imDbRating: string

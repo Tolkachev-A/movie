@@ -1,4 +1,4 @@
-import {MovieDataType} from '../stor/moviePageReducer';
+import {MovieDataType} from '../../stor/moviePageReducer';
 
 const dataSort: MovieDataType = {
     id: '',
@@ -9,12 +9,12 @@ const dataSort: MovieDataType = {
     runtimeStr: '',
     plot: '',
     stars: '',
-    actorList: {
+    actorList: [{
         id: '',
         image: '',
         name: '',
         asCharacter: '',
-    },
+    }],
     genres: '',
     countries: '',
     imDbRating: '',

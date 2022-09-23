@@ -9,8 +9,8 @@ export const Photos: FC<PhotosType> = ({height = 100, width = 100, borderRadius 
                 < img
                     src={src}
                     style={{height: `${height}px`, width: `${width}px`, borderRadius: `${borderRadius}px`}}
-                    srcSet={` w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                    alt={'item.title'}
+                    srcSet={src}
+                    alt={text}
                     loading="lazy"
                 />
             </ImageListItem>

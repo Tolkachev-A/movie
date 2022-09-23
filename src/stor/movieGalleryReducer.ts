@@ -1,12 +1,12 @@
 import {AppDispatch, AppThunk} from './store';
 import {api, ItemsMostPopularMoviesType} from '../api/api';
 
-let initialState = {
+export const initialStateGallery = {
     itemsMovie: [] as Array<ItemsMostPopularMoviesType>
 }
 
 
-export const MovieGalleryReducer = (state = initialState, action: ActionMovieGalleryReducer): InitialStateType => {
+export const MovieGalleryReducer = (state = initialStateGallery, action: ActionMovieGalleryReducer): InitialStateType => {
     switch (action.type) {
         case 'SET_POPULAR_MOVIES':
             return {
@@ -29,4 +29,4 @@ export const fetchMovies = (): AppThunk => async (dispatch: AppDispatch) => {
 }
 //type
 export type ActionMovieGalleryReducer = ReturnType<typeof setMostPopularMovies>
-type InitialStateType = typeof initialState
+type InitialStateType = typeof initialStateGallery
