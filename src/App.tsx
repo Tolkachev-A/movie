@@ -6,18 +6,24 @@ import {MoviePage} from './page/MoviePage';
 import {Container} from '@mui/material';
 import {Header} from './components/Header';
 import {useAppDispatch, useAppSelector} from './common/hooks/appHooks';
-import {fetchMovies} from './stor/movieGalleryReducer';
+import {fetchMovies, setInitialized} from './stor/movieGalleryReducer';
+import {Loading} from './common/components/Loading/Loading';
 
 function App() {
     const dispatch = useAppDispatch()
     const itemsMovie = useAppSelector(state => state.movieGallery.itemsMovie)
+    const isInitialized = useAppSelector(state => state.movieGallery.isInitialized)
 
     useEffect(() => {
         if (itemsMovie.length === 0) {
             dispatch(fetchMovies())
         }
+        dispatch(setInitialized(true))
     }, [])
 
+    if (!isInitialized) {
+        return <Loading/>
+    }
 
     return (
         <div className="App">

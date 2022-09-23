@@ -4,7 +4,8 @@ const instance = axios.create({
     baseURL: 'https://imdb-api.com/en/API/'
 })
 
-const key = 'k_x297nk26'
+// const key = 'k_x297nk26'
+const key = 'k_1k96n284'
 
 export const api = {
     fetchMovies: async () => {
@@ -13,6 +14,10 @@ export const api = {
     },
     fetchInfoMovie: async (id: string) => {
         const res = await instance.get<DataMovieResponseType>(`Title/${key}/${id}/Wikipedia`)
+        return res.data
+    },
+    fetchImageMovie: async (id: string) => {
+        const res = await instance.get<DataImageMovieType>(`Images/${key}/${id}/Short`)
         return res.data
     },
     fetchYouTubeTrailer: async (id: string) => {
@@ -63,3 +68,6 @@ export type DataMovieResponseType = {
     wikipedia: { imDbId: string, plainText: string }
 }
 export type DataYuTubeResponseType = { videoId: string }
+export type DataImageMovieType = {
+    items: { title: string, image: string }[]
+}

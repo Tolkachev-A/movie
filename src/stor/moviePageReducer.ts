@@ -1,6 +1,7 @@
 import {AppDispatch, AppThunk} from './store';
-import {api, DataMovieResponseType, DataYuTubeResponseType} from '../api/api';
+import {api, DataImageMovieType, DataMovieResponseType, DataYuTubeResponseType} from '../api/api';
 import {sortData} from '../common/utils/sortData';
+import {setLoading} from './movieGalleryReducer';
 
 
 let initialState = {
@@ -28,11 +29,18 @@ export const setInfoMovies = (payload: MovieDataType) => ({
 }) as const
 //thunk
 export const fetchInfoMovie = (id: string): AppThunk => async (dispatch: AppDispatch) => {
-    const response = await Promise.allSettled([api.fetchInfoMovie(id), api.fetchYouTubeTrailer(id)])
-    let sortResponse = sortData(response)
-    dispatch(setInfoMovies(sortResponse))
+    try {
+        dispatch(setLoading(true))
+        const response = await Promise.allSettled([api.fetchInfoMovie(id), api.fetchYouTubeTrailer(id), api.fetchImageMovie(id)])
+        let sortResponse = sortData(response)
+        dispatch(setInfoMovies(sortResponse))
+    } catch (e) {
+
+    } finally {
+        dispatch(setLoading(false))
+    }
 }
 //type
 export type ActionMoviePageReducer = ReturnType<typeof setInfoMovies>
 type InitialStateType = typeof initialState
-export type MovieDataType = DataMovieResponseType & DataYuTubeResponseType
+export type MovieDataType = DataMovieResponseType & DataYuTubeResponseType & DataImageMovieType

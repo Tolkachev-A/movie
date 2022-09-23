@@ -9,9 +9,6 @@ export const Movie = () => {
     const dispatch = useAppDispatch()
     const itemsMovie = useAppSelector(state => state.movieGallery.itemsMovie)
 
-    // const movieClickHandler = (id: string) => {
-    //     dispatch(fetchInfoMovie(id))
-    // }
 
     return (
         <div className={'movie'}>
@@ -22,8 +19,6 @@ export const Movie = () => {
                                   title={item.title}
                                   imDbRating={item.imDbRating}
                                   year={item.description}
-                    // movieClickHandler={movieClickHandler}
-
                 />
             })}
         </div>

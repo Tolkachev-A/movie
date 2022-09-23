@@ -15,6 +15,7 @@ const dataSort: MovieDataType = {
         name: '',
         asCharacter: '',
     }],
+    items: [{title: '', image: ''}],
     genres: '',
     countries: '',
     imDbRating: '',
