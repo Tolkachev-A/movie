@@ -87,13 +87,6 @@ export const MoviePage = () => {
                                                                        src={item.image}
                                                                        text={item.name}/>)}
                         </Box>
-                        <div className={'boxContainer'}>
-                            <Typography component="span">
-                                VIDEOS
-                            </Typography>
-                            <div className={'borderBox'}/>
-                            <Video videoId={movieData.videoId}/>
-                        </div>
                     </div>
                 </Box>
             </div>

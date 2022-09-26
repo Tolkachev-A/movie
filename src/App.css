@@ -81,8 +81,8 @@
 .poster {
     display: flex;
     flex-direction: column;
-    max-width: 400px;
-    width: 100%;
+    width: 400px;
+    align-items: center;
     position: fixed;
 }
 
@@ -150,7 +150,7 @@
 
     .poster {
         position: static;
-        max-width: none;
+        width: 100%;
         align-items: center;
         margin-bottom: 20px;
     }
