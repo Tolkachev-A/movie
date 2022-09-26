@@ -4,8 +4,8 @@ const instance = axios.create({
     baseURL: 'https://imdb-api.com/en/API/'
 })
 
-// const key = 'k_x297nk26'
-const key = 'k_1k96n284'
+const key = 'k_x297nk26'
+// const key = 'k_1k96n284'
 
 export const api = {
     fetchMovies: async () => {

@@ -73,14 +73,20 @@
 
 }
 
-.poster {
-    display: flex;
-    max-width: 400px;
+.posterBlock {
+    min-width: 400px;
     width: 100%;
 }
 
-.poster > div img {
+.poster {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    width: 100%;
+    position: fixed;
+}
 
+.poster > div img {
     max-height: 500px !important;
     height: 100% !important;
     width: 100% !important;
@@ -126,10 +132,13 @@
     color: #abb7c4;
 }
 
+.btn {
+    width: 321px !important;
+}
+
 @media (max-width: 970px) {
     .movieBloc {
         display: flex;
-        /*flex-direction: column;*/
         align-items: center;
     }
 }
@@ -140,14 +149,23 @@
     }
 
     .poster {
+        position: static;
         max-width: none;
-        justify-content: center;
+        align-items: center;
         margin-bottom: 20px;
+    }
+
+    .posterBlock {
+        min-width: inherit;
     }
 }
 
 @media (max-width: 480px) {
     .imagesList {
         flex-wrap: wrap;
+    }
+
+    .btn {
+        width: 250px !important;
     }
 }

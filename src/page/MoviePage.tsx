@@ -10,6 +10,10 @@ import {fetchInfoMovie,} from '../stor/moviePageReducer';
 import {useParams} from 'react-router';
 import Box from '@mui/material/Box';
 import {Loading} from '../common/components/Loading/Loading';
+import Button from '@mui/material/Button';
+import {BasicModal} from '../common/components/Modal/Modal';
+import {Btn} from '../common/components/Button/Button';
+
 
 export const MoviePage = () => {
     const [itemsImage, setItemsImage] = useState<{ title: string; image: string; }[]>()
@@ -29,16 +33,25 @@ export const MoviePage = () => {
     useEffect(() => {
         id && dispatch(fetchInfoMovie(id))
     }, [])
-    debugger
+
+
     if (loading || Object.keys(movieData).length === 0) {
         return <Loading/>
     }
 
     return (
         <div className={'containerBody movieBloc'}>
+
             <div className={'infoContainer'}>
-                <div className={'poster'}>
-                    <Photos src={movieData.image} borderRadius={'0'}/>
+                <div className={'posterBlock'}>
+                    <div className={'poster'}>
+                        <Photos src={movieData.image} borderRadius={'0'}/>
+                        <BasicModal
+                            childrenBtn={<Btn title={'WATCH TRAILER'}/>}>
+                            <Video videoId={movieData.videoId}/>
+                        </BasicModal>
+
+                    </div>
                 </div>
                 <Box sx={{width: '100%', display: 'flex', justifyContent: 'center'}}>
                     <div className={'infoBloc'}>
