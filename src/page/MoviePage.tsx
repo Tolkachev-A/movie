@@ -10,7 +10,6 @@ import {fetchInfoMovie,} from '../stor/moviePageReducer';
 import {useParams} from 'react-router';
 import Box from '@mui/material/Box';
 import {Loading} from '../common/components/Loading/Loading';
-import Button from '@mui/material/Button';
 import {BasicModal} from '../common/components/Modal/Modal';
 import {Btn} from '../common/components/Button/Button';
 
@@ -28,7 +27,7 @@ export const MoviePage = () => {
         if (movieData.items && movieData.items.length > 0) {
             setItemsImage([movieData.items[0], movieData.items[1], movieData.items[2], movieData.items[3]])
         }
-    }, [movieData.items])
+    }, [movieData])
 
     useEffect(() => {
         id && dispatch(fetchInfoMovie(id))

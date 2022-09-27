@@ -7,7 +7,8 @@ import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import '../App.css'
-import {NavLink} from "react-router-dom";
+import {NavLink} from 'react-router-dom';
+import logo from '../assets/logo.svg'
 
 const Search = styled('div')(({theme}) => ({
     position: 'relative',
@@ -38,7 +39,6 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
     color: 'inherit',
     '& .MuiInputBase-input': {
         padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
         transition: theme.transitions.create('width'),
         width: '100%',
@@ -63,11 +63,11 @@ export const Header = () => {
                             aria-controls="menu-appbar"
                             aria-haspopup="true"
                             onClick={() => {
-                                
+
                             }}
                             color="inherit"
                         >
-                            <img src="https://dmitryvolkov.me/demo/flixgo2.0/main/img/logo.svg" alt=""/>
+                            <img src={logo} alt=""/>
                         </IconButton>
                     </NavLink>
 

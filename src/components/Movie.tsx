@@ -1,12 +1,10 @@
 import * as React from 'react';
 import {MovieCard} from './movieCard/MovieCard';
 import '../App.css'
-import {useAppDispatch, useAppSelector} from '../common/hooks/appHooks';
-import {fetchInfoMovie} from '../stor/moviePageReducer';
+import {useAppSelector} from '../common/hooks/appHooks';
 
 
 export const Movie = () => {
-    const dispatch = useAppDispatch()
     const itemsMovie = useAppSelector(state => state.movieGallery.itemsMovie)
 
 

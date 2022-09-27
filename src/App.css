@@ -4,6 +4,7 @@
 
 .containerBody {
     padding: 70px 0;
+    min-height: 100vh;
 }
 
 .movieBloc {
