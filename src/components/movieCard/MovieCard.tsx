@@ -21,6 +21,8 @@ type MovieCardType = {
 export const MovieCard: FC<MovieCardType> = (props) => {
     const {ref, inView, entry} = useInView({
         threshold: 0,
+        triggerOnce: true,
+        rootMargin: '5px 0px 0px 0px ',
     });
     const [src, setSrc] = useState('')
 
