@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useCallback, useEffect, useRef, useState} from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -8,7 +8,7 @@ import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import IconButton from '@mui/material/IconButton';
 import StarIcon from '@mui/icons-material/Star';
 import {NavLink} from 'react-router-dom';
-import {MovieImg} from './MovieImg';
+import {useInView} from 'react-intersection-observer';
 
 type MovieCardType = {
     id: string
@@ -16,18 +16,34 @@ type MovieCardType = {
     imDbRating: string
     image: string
     year: string
-    // movieClickHandler: (id: string) => void
 }
 
 export const MovieCard: FC<MovieCardType> = (props) => {
+    const {ref, inView, entry} = useInView({
+        threshold: 0,
+    });
+    const [src, setSrc] = useState('')
+
+
+    useEffect(() => {
+        if (inView && src === '') {
+            setSrc(props.image)
+        }
+    }, [inView])
     return (
         <Card className={style.movieBloc}>
             <NavLink to={`/movie/${props.id}`}>
                 <Box className={style.movieImg}>
-                    <MovieImg height={'250'} image={props.image}/>
+                    <img
+                        ref={ref}
+                        className={`${style.cardImg} ${style.dataSrc}`}
+
+                        alt="green iguana"
+                        data-src={props.image}
+                        src={src}
+                    />
                     <div className={style.play}>
                         <IconButton size={'large'}
-                            // onClick={() => props.movieClickHandler(props.id)}//
                         >
                             <PlayCircleOutlineIcon/>
                         </IconButton>

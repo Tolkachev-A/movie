@@ -6,7 +6,6 @@ const instance = axios.create({
 
 const key = 'k_x297nk26'
 // const key = 'k_1k96n284'
-
 export const api = {
     fetchMovies: async () => {
         const res = await instance.get<responseData>(`AdvancedSearch/${key}?title_type=feature&release_date=2022-01-01,2022-07-07`)
